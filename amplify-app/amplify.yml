@@ -6,8 +6,8 @@ frontend:
       commands: npm build
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: /
+    baseDirectory: dist/amplify-app
     files:
       - '**/*'
   cache:
-    paths: dist/amplify-app
+    paths: []
