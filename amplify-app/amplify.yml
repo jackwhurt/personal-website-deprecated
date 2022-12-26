@@ -3,7 +3,7 @@ frontend:
   phases:
     # IMPORTANT - Please verify your build commands
     build:
-      commands: npm build
+      commands: npm run-script build
   artifacts:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: dist/amplify-app
