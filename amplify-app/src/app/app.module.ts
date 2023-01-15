@@ -11,9 +11,10 @@ import { AppComponent } from './app.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, RestaurantsComponent, NavbarComponent, HomeComponent],
+  declarations: [AppComponent, RestaurantsComponent, NavbarComponent, HomeComponent, FooterComponent],
   imports: [
     BrowserModule,
     NgbModule,
