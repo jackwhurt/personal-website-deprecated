@@ -1,8 +1,8 @@
 #page-container {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 13rem);
 }
 
 #content-wrap {
-    padding-bottom: 2.5rem;
+    padding-bottom: 8rem;
 }
