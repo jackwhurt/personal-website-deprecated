@@ -1,0 +1,11 @@
+#headshot {
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+#intro {
+    padding-top: 10px;
+}
