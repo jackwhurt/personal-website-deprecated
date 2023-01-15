@@ -10,9 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, RestaurantsComponent, NavbarComponent],
+  declarations: [AppComponent, RestaurantsComponent, NavbarComponent, HomeComponent],
   imports: [
     BrowserModule,
     NgbModule,
