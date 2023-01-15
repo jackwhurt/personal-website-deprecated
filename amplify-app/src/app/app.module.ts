@@ -5,21 +5,23 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 /* new form imports */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, RestaurantsComponent],
+  declarations: [AppComponent, RestaurantsComponent, NavbarComponent],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     AmplifyAuthenticatorModule,
-    /* configuring form modules */
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
