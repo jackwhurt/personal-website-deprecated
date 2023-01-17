@@ -12,9 +12,11 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { GymTrackerComponent } from './gym-tracker/gym-tracker.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
-  declarations: [AppComponent, RestaurantsComponent, NavbarComponent, HomeComponent, FooterComponent],
+  declarations: [AppComponent, RestaurantsComponent, NavbarComponent, HomeComponent, FooterComponent, GymTrackerComponent, CalendarComponent],
   imports: [
     BrowserModule,
     NgbModule,
