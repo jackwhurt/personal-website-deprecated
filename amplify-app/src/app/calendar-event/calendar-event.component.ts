@@ -10,19 +10,23 @@ import { APIService, CalendarEvent } from '../API.service';
 export class CalendarEventComponent {
   public createForm: FormGroup;
 
-  /* declare restaurants variable */
   public calendarEvents: Array<CalendarEvent> = [];
 
   constructor(private api: APIService, private fb: FormBuilder) {
     this.createForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      city: ['', Validators.required]
+      start: ['', Validators.required],
+      end: ['', Validators.required],
+      title: ['', Validators.required],
+      color: ['', Validators.required],
+      actions: ['', Validators.required],
+      allDay: ['', Validators.required],
+      resizable: ['', Validators.required],
+      draggable: ['', Validators.required],
     });
   }
 
   async ngOnInit() {
-    /* fetch restaurants when app loads */
+    /* fetch when app loads */
     this.api.ListCalendarEvents().then((event) => {
       this.calendarEvents = event.items as CalendarEvent[];
     });
@@ -38,5 +42,23 @@ export class CalendarEventComponent {
       .catch((e) => {
         console.log('error creating calendar event', e);
       });
+  }
+
+  public onCreateLoad() {
+    const calEvent1: CalendarEvent = {
+      __typename: 'CalendarEvent',
+      id: '123',
+      start: '',
+      end: '',
+      title: 'Louis',
+      color: 'Purple',
+      actions: [],
+      allDay: false,
+      resizable: {
+        beforeStart: false,
+        afterEnd: false
+      },
+      draggable: false
+    }
   }
 }

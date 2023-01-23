@@ -1,1 +1,9 @@
-<p>calendar-event works!</p>
+<div class="form-body">
+    <button (click)=onCreateLoad() type="submit">Submit</button>
+
+    <div *ngFor="let event of calendarEvents">
+        <div>{{ event.color }}</div>
+        <div>{{ event.id }}</div>
+        <div>{{ event.title }}</div>
+    </div>
+</div>
