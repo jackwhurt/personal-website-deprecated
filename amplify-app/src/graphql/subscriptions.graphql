@@ -11,6 +11,7 @@ subscription OnCreateCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }
@@ -27,6 +28,7 @@ subscription OnUpdateCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }
@@ -43,6 +45,7 @@ subscription OnDeleteCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }

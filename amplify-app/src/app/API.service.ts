@@ -27,6 +27,7 @@ export type CreateCalendarEventInput = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
 };
 
 export type ModelCalendarEventConditionInput = {
@@ -37,6 +38,7 @@ export type ModelCalendarEventConditionInput = {
   allDay?: ModelBooleanInput | null;
   resizable?: ModelStringInput | null;
   draggable?: ModelBooleanInput | null;
+  colour?: ModelStringInput | null;
   and?: Array<ModelCalendarEventConditionInput | null> | null;
   or?: Array<ModelCalendarEventConditionInput | null> | null;
   not?: ModelCalendarEventConditionInput | null;
@@ -98,6 +100,7 @@ export type CalendarEvent = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -111,6 +114,7 @@ export type UpdateCalendarEventInput = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
 };
 
 export type DeleteCalendarEventInput = {
@@ -163,6 +167,7 @@ export type ModelCalendarEventFilterInput = {
   allDay?: ModelBooleanInput | null;
   resizable?: ModelStringInput | null;
   draggable?: ModelBooleanInput | null;
+  colour?: ModelStringInput | null;
   and?: Array<ModelCalendarEventFilterInput | null> | null;
   or?: Array<ModelCalendarEventFilterInput | null> | null;
   not?: ModelCalendarEventFilterInput | null;
@@ -215,6 +220,7 @@ export type ModelSubscriptionCalendarEventFilterInput = {
   allDay?: ModelSubscriptionBooleanInput | null;
   resizable?: ModelSubscriptionStringInput | null;
   draggable?: ModelSubscriptionBooleanInput | null;
+  colour?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionCalendarEventFilterInput | null> | null;
   or?: Array<ModelSubscriptionCalendarEventFilterInput | null> | null;
 };
@@ -273,6 +279,7 @@ export type CreateCalendarEventMutation = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -287,6 +294,7 @@ export type UpdateCalendarEventMutation = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -301,6 +309,7 @@ export type DeleteCalendarEventMutation = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -345,6 +354,7 @@ export type GetCalendarEventQuery = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -361,6 +371,7 @@ export type ListCalendarEventsQuery = {
     allDay?: boolean | null;
     resizable?: string | null;
     draggable?: boolean | null;
+    colour?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -401,6 +412,7 @@ export type OnCreateCalendarEventSubscription = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -415,6 +427,7 @@ export type OnUpdateCalendarEventSubscription = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -429,6 +442,7 @@ export type OnDeleteCalendarEventSubscription = {
   allDay?: boolean | null;
   resizable?: string | null;
   draggable?: boolean | null;
+  colour?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -482,6 +496,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -512,6 +527,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -542,6 +558,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -647,6 +664,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -677,6 +695,7 @@ export class APIService {
             allDay
             resizable
             draggable
+            colour
             createdAt
             updatedAt
           }
@@ -769,6 +788,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -802,6 +822,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }
@@ -835,6 +856,7 @@ export class APIService {
           allDay
           resizable
           draggable
+          colour
           createdAt
           updatedAt
         }

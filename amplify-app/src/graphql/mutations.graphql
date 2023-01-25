@@ -12,6 +12,7 @@ mutation CreateCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }
@@ -29,6 +30,7 @@ mutation UpdateCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }
@@ -46,6 +48,7 @@ mutation DeleteCalendarEvent(
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }

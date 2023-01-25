@@ -7,6 +7,7 @@ type CalendarEvent @model @auth(rules: [{allow: public}]) {
   allDay: Boolean
   resizable: AWSJSON
   draggable: Boolean
+  colour: String
 }
 
 type Restaurant @model @auth(rules: [{allow: public}]) {

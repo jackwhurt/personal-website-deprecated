@@ -9,6 +9,7 @@ query GetCalendarEvent($id: ID!) {
     allDay
     resizable
     draggable
+    colour
     createdAt
     updatedAt
   }
@@ -28,6 +29,7 @@ query ListCalendarEvents(
       allDay
       resizable
       draggable
+      colour
       createdAt
       updatedAt
     }
