@@ -10,57 +10,36 @@ export interface SubscriptionResponse<T> {
 }
 
 export type __SubscriptionContainer = {
+  onCreateCalendarEvent: OnCreateCalendarEventSubscription;
+  onUpdateCalendarEvent: OnUpdateCalendarEventSubscription;
+  onDeleteCalendarEvent: OnDeleteCalendarEventSubscription;
   onCreateRestaurant: OnCreateRestaurantSubscription;
   onUpdateRestaurant: OnUpdateRestaurantSubscription;
   onDeleteRestaurant: OnDeleteRestaurantSubscription;
 };
 
-export type CreateRestaurantInput = {
-  id?: string | null;
-  name: string;
-  description: string;
-  city: string;
-};
-
 export type CreateCalendarEventInput = {
-  id: string | null;
-  start: any,
-  end: any,
-  title: string,
-  color: string,
-  actions: CalendarEvent[],
-  allDay: boolean,
-  resizable: {
-    beforeStart: boolean,
-    afterEnd: boolean,
-  },
-  draggable: boolean,
+  id?: string | null;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
 };
 
-export type ModelRestaurantConditionInput = {
-  name?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  city?: ModelStringInput | null;
-  and?: Array<ModelRestaurantConditionInput | null> | null;
-  or?: Array<ModelRestaurantConditionInput | null> | null;
-  not?: ModelRestaurantConditionInput | null;
-};
-
-export type ModelCalendarEventConditionInput = {  //TODO: change to cal
-  start: ModelStringInput | null;
-  end: ModelStringInput | null;
-  title: ModelStringInput | null;
-  color: ModelStringInput | null;
-  actions: CalendarEvent[],
-  allDay: boolean,
-  resizable: {
-    beforeStart: boolean,
-    afterEnd: boolean,
-  },
-  draggable: boolean,
-  and?: Array<ModelRestaurantConditionInput | null> | null;
-  or?: Array<ModelRestaurantConditionInput | null> | null;
-  not?: ModelRestaurantConditionInput | null;
+export type ModelCalendarEventConditionInput = {
+  start?: ModelStringInput | null;
+  end?: ModelStringInput | null;
+  title?: ModelStringInput | null;
+  actions?: ModelStringInput | null;
+  allDay?: ModelBooleanInput | null;
+  resizable?: ModelStringInput | null;
+  draggable?: ModelBooleanInput | null;
+  and?: Array<ModelCalendarEventConditionInput | null> | null;
+  or?: Array<ModelCalendarEventConditionInput | null> | null;
+  not?: ModelCalendarEventConditionInput | null;
 };
 
 export type ModelStringInput = {
@@ -102,6 +81,58 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null;
+  eq?: boolean | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+};
+
+export type CalendarEvent = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateCalendarEventInput = {
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+};
+
+export type DeleteCalendarEventInput = {
+  id: string;
+};
+
+export type CreateRestaurantInput = {
+  id?: string | null;
+  name: string;
+  description: string;
+  city: string;
+};
+
+export type ModelRestaurantConditionInput = {
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelRestaurantConditionInput | null> | null;
+  or?: Array<ModelRestaurantConditionInput | null> | null;
+  not?: ModelRestaurantConditionInput | null;
+};
+
 export type Restaurant = {
   __typename: "Restaurant";
   id: string;
@@ -110,22 +141,6 @@ export type Restaurant = {
   city: string;
   createdAt: string;
   updatedAt: string;
-};
-
-export type CalendarEvent = {
-  __typename: "CalendarEvent";
-  id: string;
-  start: any,
-  end: any,
-  title: string,
-  color: string,
-  actions: CalendarEvent[],
-  allDay: boolean,
-  resizable: {
-    beforeStart: boolean,
-    afterEnd: boolean,
-  },
-  draggable: boolean,
 };
 
 export type UpdateRestaurantInput = {
@@ -139,21 +154,15 @@ export type DeleteRestaurantInput = {
   id: string;
 };
 
-export type ModelRestaurantFilterInput = {
-  id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  city?: ModelStringInput | null;
-  and?: Array<ModelRestaurantFilterInput | null> | null;
-  or?: Array<ModelRestaurantFilterInput | null> | null;
-  not?: ModelRestaurantFilterInput | null;
-};
-
 export type ModelCalendarEventFilterInput = {
   id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  city?: ModelStringInput | null;
+  start?: ModelStringInput | null;
+  end?: ModelStringInput | null;
+  title?: ModelStringInput | null;
+  actions?: ModelStringInput | null;
+  allDay?: ModelBooleanInput | null;
+  resizable?: ModelStringInput | null;
+  draggable?: ModelBooleanInput | null;
   and?: Array<ModelCalendarEventFilterInput | null> | null;
   or?: Array<ModelCalendarEventFilterInput | null> | null;
   not?: ModelCalendarEventFilterInput | null;
@@ -175,19 +184,39 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
+export type ModelCalendarEventConnection = {
+  __typename: "ModelCalendarEventConnection";
+  items: Array<CalendarEvent | null>;
+  nextToken?: string | null;
+};
+
+export type ModelRestaurantFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  city?: ModelStringInput | null;
+  and?: Array<ModelRestaurantFilterInput | null> | null;
+  or?: Array<ModelRestaurantFilterInput | null> | null;
+  not?: ModelRestaurantFilterInput | null;
+};
+
 export type ModelRestaurantConnection = {
   __typename: "ModelRestaurantConnection";
   items: Array<Restaurant | null>;
   nextToken?: string | null;
 };
 
-export type ModelSubscriptionRestaurantFilterInput = {
+export type ModelSubscriptionCalendarEventFilterInput = {
   id?: ModelSubscriptionIDInput | null;
-  name?: ModelSubscriptionStringInput | null;
-  description?: ModelSubscriptionStringInput | null;
-  city?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionRestaurantFilterInput | null> | null;
-  or?: Array<ModelSubscriptionRestaurantFilterInput | null> | null;
+  start?: ModelSubscriptionStringInput | null;
+  end?: ModelSubscriptionStringInput | null;
+  title?: ModelSubscriptionStringInput | null;
+  actions?: ModelSubscriptionStringInput | null;
+  allDay?: ModelSubscriptionBooleanInput | null;
+  resizable?: ModelSubscriptionStringInput | null;
+  draggable?: ModelSubscriptionBooleanInput | null;
+  and?: Array<ModelSubscriptionCalendarEventFilterInput | null> | null;
+  or?: Array<ModelSubscriptionCalendarEventFilterInput | null> | null;
 };
 
 export type ModelSubscriptionIDInput = {
@@ -220,6 +249,62 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array<string | null> | null;
 };
 
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null;
+  eq?: boolean | null;
+};
+
+export type ModelSubscriptionRestaurantFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  name?: ModelSubscriptionStringInput | null;
+  description?: ModelSubscriptionStringInput | null;
+  city?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionRestaurantFilterInput | null> | null;
+  or?: Array<ModelSubscriptionRestaurantFilterInput | null> | null;
+};
+
+export type CreateCalendarEventMutation = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateCalendarEventMutation = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteCalendarEventMutation = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type CreateRestaurantMutation = {
   __typename: "Restaurant";
   id: string;
@@ -228,22 +313,6 @@ export type CreateRestaurantMutation = {
   city: string;
   createdAt: string;
   updatedAt: string;
-};
-
-export type CreateCalendarEventMutation = {
-  __typename: "CalendarEvent";
-  id: string;
-  start: any,
-  end: any,
-  title: string,
-  color: string,
-  actions: CalendarEvent[],
-  allDay: boolean,
-  resizable: {
-    beforeStart: boolean,
-    afterEnd: boolean,
-  },
-  draggable: boolean,
 };
 
 export type UpdateRestaurantMutation = {
@@ -264,6 +333,38 @@ export type DeleteRestaurantMutation = {
   city: string;
   createdAt: string;
   updatedAt: string;
+};
+
+export type GetCalendarEventQuery = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListCalendarEventsQuery = {
+  __typename: "ModelCalendarEventConnection";
+  items: Array<{
+    __typename: "CalendarEvent";
+    id: string;
+    start?: string | null;
+    end?: string | null;
+    title?: string | null;
+    actions?: string | null;
+    allDay?: boolean | null;
+    resizable?: string | null;
+    draggable?: boolean | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null>;
+  nextToken?: string | null;
 };
 
 export type GetRestaurantQuery = {
@@ -290,24 +391,46 @@ export type ListRestaurantsQuery = {
   nextToken?: string | null;
 };
 
-export type ListCalendarEventQuery = {
-  __typename: "ModelCalendarEventConnection";
-  items: Array<{
-    __typename: "CalendarEvent";
-    id: string;
-    start: any,
-    end: any,
-    title: string,
-    color: string,
-    actions: CalendarEvent[],
-    allDay: boolean,
-    resizable: {
-      beforeStart: boolean,
-      afterEnd: boolean,
-    },
-    draggable: boolean,
-} | null>;
-nextToken?: string | null;
+export type OnCreateCalendarEventSubscription = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateCalendarEventSubscription = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteCalendarEventSubscription = {
+  __typename: "CalendarEvent";
+  id: string;
+  start?: string | null;
+  end?: string | null;
+  title?: string | null;
+  actions?: string | null;
+  allDay?: boolean | null;
+  resizable?: string | null;
+  draggable?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OnCreateRestaurantSubscription = {
@@ -344,6 +467,96 @@ export type OnDeleteRestaurantSubscription = {
   providedIn: "root"
 })
 export class APIService {
+  async CreateCalendarEvent(
+    input: CreateCalendarEventInput,
+    condition?: ModelCalendarEventConditionInput
+  ): Promise<CreateCalendarEventMutation> {
+    const statement = `mutation CreateCalendarEvent($input: CreateCalendarEventInput!, $condition: ModelCalendarEventConditionInput) {
+        createCalendarEvent(input: $input, condition: $condition) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCalendarEventMutation>response.data.createCalendarEvent;
+  }
+  async UpdateCalendarEvent(
+    input: UpdateCalendarEventInput,
+    condition?: ModelCalendarEventConditionInput
+  ): Promise<UpdateCalendarEventMutation> {
+    const statement = `mutation UpdateCalendarEvent($input: UpdateCalendarEventInput!, $condition: ModelCalendarEventConditionInput) {
+        updateCalendarEvent(input: $input, condition: $condition) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCalendarEventMutation>response.data.updateCalendarEvent;
+  }
+  async DeleteCalendarEvent(
+    input: DeleteCalendarEventInput,
+    condition?: ModelCalendarEventConditionInput
+  ): Promise<DeleteCalendarEventMutation> {
+    const statement = `mutation DeleteCalendarEvent($input: DeleteCalendarEventInput!, $condition: ModelCalendarEventConditionInput) {
+        deleteCalendarEvent(input: $input, condition: $condition) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCalendarEventMutation>response.data.deleteCalendarEvent;
+  }
   async CreateRestaurant(
     input: CreateRestaurantInput,
     condition?: ModelRestaurantConditionInput
@@ -370,37 +583,6 @@ export class APIService {
     )) as any;
     return <CreateRestaurantMutation>response.data.createRestaurant;
   }
-
-  async CreateCalendarEvent(
-    input: CreateCalendarEventInput,
-    condition?: ModelCalendarEventConditionInput
-  ): Promise<CreateCalendarEventMutation> {
-    const statement = `mutation CreateCalendarEvent($input: CreateCalendarEventInput!, $condition: ModelCalendarEventConditionInput) {
-        createCalendarEvent(input: $input, condition: $condition) {
-          __typename
-          id
-          start
-          end
-          title
-          color
-          actions
-          allDay
-          resizable
-          draggable
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <CreateCalendarEventMutation>response.data.createRestaurant;
-  }
-
   async UpdateRestaurant(
     input: UpdateRestaurantInput,
     condition?: ModelRestaurantConditionInput
@@ -452,6 +634,69 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeleteRestaurantMutation>response.data.deleteRestaurant;
+  }
+  async GetCalendarEvent(id: string): Promise<GetCalendarEventQuery> {
+    const statement = `query GetCalendarEvent($id: ID!) {
+        getCalendarEvent(id: $id) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCalendarEventQuery>response.data.getCalendarEvent;
+  }
+  async ListCalendarEvents(
+    filter?: ModelCalendarEventFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCalendarEventsQuery> {
+    const statement = `query ListCalendarEvents($filter: ModelCalendarEventFilterInput, $limit: Int, $nextToken: String) {
+        listCalendarEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            start
+            end
+            title
+            actions
+            allDay
+            resizable
+            draggable
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCalendarEventsQuery>response.data.listCalendarEvents;
   }
   async GetRestaurant(id: string): Promise<GetRestaurantQuery> {
     const statement = `query GetRestaurant($id: ID!) {
@@ -508,44 +753,103 @@ export class APIService {
     )) as any;
     return <ListRestaurantsQuery>response.data.listRestaurants;
   }
-
-  async ListCalendarEvents(
-    filter?: ModelCalendarEventFilterInput,
-    limit?: number,
-    nextToken?: string
-  ): Promise<ListCalendarEventQuery> {
-    const statement = `query ListCalendarEvents($filter: ModelCalendarEventFilterInput, $limit: Int, $nextToken: String) {
-        listCalendarEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  OnCreateCalendarEventListener(
+    filter?: ModelSubscriptionCalendarEventFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCalendarEvent">>
+  > {
+    const statement = `subscription OnCreateCalendarEvent($filter: ModelSubscriptionCalendarEventFilterInput) {
+        onCreateCalendarEvent(filter: $filter) {
           __typename
-          items {
-            __typename
-            id
-            start
-            end
-            title
-            color
-            actions
-            allDay
-            resizable
-            draggable
-          }
-          nextToken
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
     if (filter) {
       gqlAPIServiceArguments.filter = filter;
     }
-    if (limit) {
-      gqlAPIServiceArguments.limit = limit;
-    }
-    if (nextToken) {
-      gqlAPIServiceArguments.nextToken = nextToken;
-    }
-    const response = (await API.graphql(
+    return API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <ListCalendarEventQuery>response.data.listRestaurants;
+    ) as Observable<
+      SubscriptionResponse<
+        Pick<__SubscriptionContainer, "onCreateCalendarEvent">
+      >
+    >;
+  }
+
+  OnUpdateCalendarEventListener(
+    filter?: ModelSubscriptionCalendarEventFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCalendarEvent">>
+  > {
+    const statement = `subscription OnUpdateCalendarEvent($filter: ModelSubscriptionCalendarEventFilterInput) {
+        onUpdateCalendarEvent(filter: $filter) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<
+        Pick<__SubscriptionContainer, "onUpdateCalendarEvent">
+      >
+    >;
+  }
+
+  OnDeleteCalendarEventListener(
+    filter?: ModelSubscriptionCalendarEventFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCalendarEvent">>
+  > {
+    const statement = `subscription OnDeleteCalendarEvent($filter: ModelSubscriptionCalendarEventFilterInput) {
+        onDeleteCalendarEvent(filter: $filter) {
+          __typename
+          id
+          start
+          end
+          title
+          actions
+          allDay
+          resizable
+          draggable
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<
+        Pick<__SubscriptionContainer, "onDeleteCalendarEvent">
+      >
+    >;
   }
 
   OnCreateRestaurantListener(

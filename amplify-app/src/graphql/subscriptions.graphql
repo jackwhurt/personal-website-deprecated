@@ -1,4 +1,52 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateCalendarEvent(
+  $filter: ModelSubscriptionCalendarEventFilterInput
+) {
+  onCreateCalendarEvent(filter: $filter) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCalendarEvent(
+  $filter: ModelSubscriptionCalendarEventFilterInput
+) {
+  onUpdateCalendarEvent(filter: $filter) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCalendarEvent(
+  $filter: ModelSubscriptionCalendarEventFilterInput
+) {
+  onDeleteCalendarEvent(filter: $filter) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateRestaurant(
   $filter: ModelSubscriptionRestaurantFilterInput
 ) {

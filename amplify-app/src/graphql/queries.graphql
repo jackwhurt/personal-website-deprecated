@@ -1,4 +1,39 @@
 # this is an auto generated file. This will be overwritten
+query GetCalendarEvent($id: ID!) {
+  getCalendarEvent(id: $id) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
+query ListCalendarEvents(
+  $filter: ModelCalendarEventFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCalendarEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      start
+      end
+      title
+      actions
+      allDay
+      resizable
+      draggable
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query GetRestaurant($id: ID!) {
   getRestaurant(id: $id) {
     id

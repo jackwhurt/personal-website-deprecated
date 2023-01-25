@@ -1,4 +1,55 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateCalendarEvent(
+  $input: CreateCalendarEventInput!
+  $condition: ModelCalendarEventConditionInput
+) {
+  createCalendarEvent(input: $input, condition: $condition) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCalendarEvent(
+  $input: UpdateCalendarEventInput!
+  $condition: ModelCalendarEventConditionInput
+) {
+  updateCalendarEvent(input: $input, condition: $condition) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCalendarEvent(
+  $input: DeleteCalendarEventInput!
+  $condition: ModelCalendarEventConditionInput
+) {
+  deleteCalendarEvent(input: $input, condition: $condition) {
+    id
+    start
+    end
+    title
+    actions
+    allDay
+    resizable
+    draggable
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateRestaurant(
   $input: CreateRestaurantInput!
   $condition: ModelRestaurantConditionInput
