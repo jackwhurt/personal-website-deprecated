@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { startOfDay } from 'date-fns';
 import { APIService, CalendarEvent, CreateCalendarEventInput } from '../API.service';
 
 @Component({
@@ -26,7 +27,6 @@ export class CalendarEventComponent {
   }
 
   async ngOnInit() {
-    /* fetch when app loads */
     this.api.ListCalendarEvents().then((event) => {
       this.calendarEvents = event.items as CalendarEvent[];
     });
@@ -46,14 +46,10 @@ export class CalendarEventComponent {
 
   public onCreateLoad() {
     const calEvent1: CreateCalendarEventInput = {
-      id: '123',
-      start: '',
-      end: '',
+      start: startOfDay(new Date()).toString(),
       title: 'Louis',
-      colour: 'Purple',
-      actions: '{}',
-      allDay: false,
-      resizable: '{ "beforeStart": "false", "afterEnd": "false" }',
+      colour: 'Blue',
+      allDay: true,
       draggable: false,
     }
     this.onCreate(calEvent1);

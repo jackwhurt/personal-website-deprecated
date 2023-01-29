@@ -17,6 +17,9 @@
       },
       "auth": {
         "amplifyapp449c2463": {}
+      },
+      "function": {
+        "TheBoysAmplify": {}
       }
     }
   }

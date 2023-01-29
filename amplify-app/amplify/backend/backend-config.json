@@ -49,5 +49,11 @@
       "service": "Cognito"
     }
   },
-  "function": {}
+  "function": {
+    "TheBoysAmplify": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
 }
